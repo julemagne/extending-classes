@@ -19,7 +19,7 @@ class DateFormatter extends Date {
 var myDateNow = new DateFormatter();
 console.log(myDateNow.getFormattedDate());
 
-console.log("A way to add 7 days to a Date:");
+console.log(" \nA way to add 7 days to a Date:");
 myDateNow.setDate(now.getDate() + 7);
 console.log(myDateNow.getFormattedDate());
 
@@ -57,12 +57,12 @@ console.log(discRental);
 console.log(discRental.sendCheckoutMessage());
 
 var bookRental = new DueDate("book");
-console.log("Book Due Date is 21 days:");
+console.log(" \nBook Due Date is 21 days:");
 console.log(bookRental);
 console.log(bookRental.sendCheckoutMessage());
 
 var flashDriveRental = new DueDate(1);
-console.log("Flash Drive Due Date is 1 day:");
+console.log(" \nFlash Drive Due Date is 1 day:");
 console.log(flashDriveRental);
 console.log(flashDriveRental.sendCheckoutMessage());
 
