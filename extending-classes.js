@@ -5,7 +5,7 @@ var now = new Date();
 console.log((now.getMonth() + 1) + '/' + now.getDate() + '/' + now.getFullYear());
 
 console.log("Let's make a class that formats the date to be easily readable by humans:");
-class myDateFormatter extends Date {
+class DateFormatter extends Date {
   constructor() {
     super();
   }
@@ -16,7 +16,7 @@ class myDateFormatter extends Date {
   }
 }
 
-var myDateNow = new myDateFormatter();
+var myDateNow = new DateFormatter();
 console.log(myDateNow.getFormattedDate());
 
 console.log("A way to add 7 days to a Date:");
@@ -24,30 +24,24 @@ myDateNow.setDate(now.getDate() + 7);
 console.log(myDateNow.getFormattedDate());
 
 console.log("Let's make a class that adds days to a Date:");
-class dueDate extends myDateFormatter {
-  constructor() {
+class DueDate extends DateFormatter {
+  constructor(rentalType) {
     super();
-  }
-
-  discDueDate() {
-    this.setDate(new Date().getDate() + 14);
-    this.days = 14;
+    if (rentalType) {
+      switch (rentalType) {
+        case "disc":
+          this.days = 14;
+          break;
+        case "book":
+          this.days = 21;
+          break;
+        default:
+          this.days = rentalType;
+      }
+    }
+    this.checkedOut = new Date();
+    this.setDate(this.checkedOut.getDate() + this.days);
     this.due = this.getFormattedDate();
-    return this;
-  }
-  
-  bookDueDate() {
-    this.setDate(new Date().getDate() + 21);
-    this.days = 21;
-    this.due = this.getFormattedDate();
-    return this;
-  }
-  
-  customDueDate(days) {
-    this.setDate(new Date().getDate() + days)
-    this.days = days;
-    this.due = this.getFormattedDate();
-    return this;
   }
   
   sendCheckoutMessage() {
@@ -57,18 +51,18 @@ class dueDate extends myDateFormatter {
   }
 }
 
-var discRental = new dueDate().discDueDate();
-console.log("Disc Due Date is 14 days:")
+var discRental = new DueDate("disc");
+console.log("Disc Due Date is 14 days:");
 console.log(discRental);
 console.log(discRental.sendCheckoutMessage());
 
-var bookRental = new dueDate().bookDueDate();
-console.log("Book Due Date is 21 days:")
+var bookRental = new DueDate("book");
+console.log("Book Due Date is 21 days:");
 console.log(bookRental);
 console.log(bookRental.sendCheckoutMessage());
 
-var flashDriveRental = new dueDate().customDueDate(1);
-console.log("Flash Drive Due Date is 1 day:")
+var flashDriveRental = new DueDate(1);
+console.log("Flash Drive Due Date is 1 day:");
 console.log(flashDriveRental);
 console.log(flashDriveRental.sendCheckoutMessage());
 
