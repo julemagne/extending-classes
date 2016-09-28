@@ -88,3 +88,40 @@ console.log(flashDriveRental.renewCheckout());
 console.log(flashDriveRental.renewCheckout());
 console.log(flashDriveRental);
 
+
+
+console.log("\nLet's extend the class Array:")
+class Crusher extends Array {
+  constructor() {
+    super();
+  }
+
+  crushing() {
+    let crusher = Crusher.from(this, thing => thing[0]);
+    return crusher.toString().split(',').join('');
+    
+    // let crusher = new Crusher();
+    // this.forEach(function(thing) {
+    //  crusher.push(thing[0]);
+    // })
+    // return crusher.toString().split(',').join('');
+  }
+}
+
+var crusher = Crusher.of("Supreme", "energetic", "crushing", "renewable", "exciting", "typeof", " ", "Magical", "error-free", "superset", "superscript", "atypical", "gamified", "entertainment");
+console.log(crusher);
+
+class Slicer extends Crusher {
+  constructor() {
+    super();
+  }
+
+  slicing() {
+    let slicer = Slicer.from(this, (thing, i) => thing[i]);
+    return slicer.toString().split(',').join('');
+  }
+}
+
+var slicer = Slicer.of("Strange", "fun", "application", "renegade", "imparting");
+console.log(slicer);
+console.log(slicer.slicing(), crusher.crushing());
