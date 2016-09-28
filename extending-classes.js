@@ -42,12 +42,27 @@ class DueDate extends DateFormatter {
     this.checkedOut = new Date();
     this.setDate(this.checkedOut.getDate() + this.days);
     this.due = this.getFormattedDate();
+    this.renewalsRemaining = 3;
   }
   
   sendCheckoutMessage() {
     let plural = this.days === 1? "day" : "days";
-    var message = "Your rental is due in " + this.days + " " + plural + " on: " + this.due;
+    let message = "Your rental is due in " + this.days + " " + plural + " on: " + this.due;
     return message;
+  }
+  
+  renewCheckout() {
+    if (this.renewalsRemaining) {
+      this.renewalsRemaining -= 1;
+      let plural = this.renewalsRemaining === 1? "renewal" : "renewals";
+      this.setDate(new Date().getDate() + this.days);
+      this.due = this.getFormattedDate();
+      let message = "Renewal successful.  You have " + this.renewalsRemaining + " " + plural + " remaining.  " + this.sendCheckoutMessage();
+      return message;
+    } else {
+      let message = "You renewed your rental 3 times and have no renewals remaining.  Your rental will accrue overdue fees if not returned by " + this.due + ".";
+      return message;
+    }
   }
 }
 
@@ -64,5 +79,12 @@ console.log(bookRental.sendCheckoutMessage());
 var flashDriveRental = new DueDate(1);
 console.log(" \nFlash Drive Due Date is 1 day:");
 console.log(flashDriveRental);
+
+console.log(" \nLet's add a function to decrement renewals:");
 console.log(flashDriveRental.sendCheckoutMessage());
+console.log(flashDriveRental.renewCheckout());
+console.log(flashDriveRental.renewCheckout());
+console.log(flashDriveRental.renewCheckout());
+console.log(flashDriveRental.renewCheckout());
+console.log(flashDriveRental);
 
