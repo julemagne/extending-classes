@@ -136,6 +136,14 @@ Object.assign(String.prototype, {
 });
 
 var hi = "hi hello friend";
-
 console.log(hi.makeExcited());
+
+Object.defineProperty(String.prototype, 'reverse', {
+  value() {
+    var word = Array.from(this);
+    return word.reverse().join("");
+  }
+});
+
+console.log(hi.reverse());
 
