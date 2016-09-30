@@ -158,4 +158,28 @@ String.prototype.foundMessage = function (text) {
 
 console.log(hi.foundMessage("hello friend"));
 
+String.prototype.countCharacters = function () { 
+  let text = this.split("");
+  let letters = {};
+  text.forEach(function (letter) { 
+    if (!letters[letter]) {
+      letters[letter] = 1;
+    } else {
+      letters[letter] += 1;
+    }
+  });
+  return letters;
+};
+
+var printCharacters = function (letters) {
+  let characters = "";
+  for (var letter in letters) {
+    characters = characters + letter + letters[letter];
+  };
+  console.log(characters);
+};
+
+var hiCharacters = hi.countCharacters();
+console.log(hiCharacters);
+printCharacters(hiCharacters);
 
