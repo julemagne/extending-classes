@@ -147,3 +147,15 @@ Object.defineProperty(String.prototype, 'reverse', {
 
 console.log(hi.reverse());
 
+String.prototype.foundMessage = function (text) {
+  var tester = new RegExp(text);
+  if (tester.test(this)) {
+    return text + " was found.";
+  } else {
+    return text + " was not found.";
+  }
+};
+
+console.log(hi.foundMessage("hello friend"));
+
+
