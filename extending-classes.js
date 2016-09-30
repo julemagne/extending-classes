@@ -90,7 +90,7 @@ console.log(flashDriveRental);
 
 
 
-console.log("\nLet's extend the class Array:")
+console.log("\nLet's extend the class Array:");
 class Crusher extends Array {
   constructor() {
     super();
@@ -125,3 +125,17 @@ class Slicer extends Crusher {
 var slicer = Slicer.of("Strange", "fun", "application", "renegade", "imparting");
 console.log(slicer);
 console.log(slicer.slicing(), crusher.crushing());
+
+
+
+console.log("\nLet's extend the class String:");
+Object.assign(String.prototype, {
+  makeExcited() {
+    return this.split(' ').join('!!!  ');
+  }
+});
+
+var hi = "hi hello friend";
+
+console.log(hi.makeExcited());
+
