@@ -135,7 +135,7 @@ Object.assign(String.prototype, {
   }
 });
 
-var hi = "hi hello friend";
+var hi = "hi hello friendzzzzerinos";
 console.log(hi.makeExcited());
 
 Object.defineProperty(String.prototype, 'reverse', {
@@ -182,4 +182,25 @@ var printCharacters = function (letters) {
 var hiCharacters = hi.countCharacters();
 console.log(hiCharacters);
 printCharacters(hiCharacters);
+
+var printAlphabetically = function (letters) {
+  let characters = "";
+  Object.keys(letters).sort().forEach(function(letter) {
+    characters = characters + letter + letters[letter];
+  });
+  console.log(characters);
+};
+
+var printDescending = function (letters) {
+  let characters = "";
+  Object.keys(letters).sort(function(a, b){
+  return +(letters[b] > letters[a]) || +(letters[b] === letters[a]) - 1;
+  }).forEach(function(letter) {
+    characters = characters + letter + letters[letter];
+  });
+  console.log(characters);
+};
+
+printAlphabetically(hiCharacters);
+printDescending(hiCharacters);
 
