@@ -131,7 +131,7 @@ console.log(slicer.slicing(), crusher.crushing());
 console.log("\nLet's extend the class String:");
 Object.assign(String.prototype, {
   makeExcited() {
-    return this.split(' ').join('!!!  ');
+    return this.split(' ').join('!!!  ') + '!!!';
   }
 });
 
