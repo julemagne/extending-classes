@@ -98,13 +98,7 @@ class Crusher extends Array {
 
   crushing() {
     let crusher = Crusher.from(this, thing => thing[0]);
-    return crusher.toString().split(',').join('');
-    
-    // let crusher = new Crusher();
-    // this.forEach(function(thing) {
-    //  crusher.push(thing[0]);
-    // })
-    // return crusher.toString().split(',').join('');
+    return crusher.join('');
   }
 }
 
