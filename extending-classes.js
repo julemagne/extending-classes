@@ -44,13 +44,13 @@ class DueDate extends DateFormatter {
     this.due = this.getFormattedDate();
     this.renewalsRemaining = 3;
   }
-  
+
   sendCheckoutMessage() {
     let plural = this.days === 1? "day" : "days";
     let message = "Your rental is due in " + this.days + " " + plural + " on: " + this.due;
     return message;
   }
-  
+
   renewCheckout() {
     if (this.renewalsRemaining) {
       this.renewalsRemaining -= 1;
@@ -112,7 +112,7 @@ class Slicer extends Crusher {
 
   slicing() {
     let slicer = Slicer.from(this, (thing, i) => thing[i]);
-    return slicer.toString().split(',').join('');
+    return slicer.join('');
   }
 }
 
@@ -152,10 +152,10 @@ String.prototype.foundMessage = function (text) {
 
 console.log(hi.foundMessage("hello friend"));
 
-String.prototype.countCharacters = function () { 
+String.prototype.countCharacters = function () {
   let text = this.split("");
   let letters = {};
-  text.forEach(function (letter) { 
+  text.forEach(function (letter) {
     if (!letters[letter]) {
       letters[letter] = 1;
     } else {
@@ -179,7 +179,7 @@ printCharacters(hiCharacters);
 
 var printAlphabetically = function (letters) {
   let characters = "";
-  Object.keys(letters).sort().forEach(function(letter) {
+  Object.keys(letters).sort().forEach(function (letter) {
     characters = characters + letter + letters[letter];
   });
   console.log(characters);
@@ -187,9 +187,9 @@ var printAlphabetically = function (letters) {
 
 var printDescending = function (letters) {
   let characters = "";
-  Object.keys(letters).sort(function(a, b){
-  return +(letters[b] > letters[a]) || +(letters[b] === letters[a]) - 1;
-  }).forEach(function(letter) {
+  Object.keys(letters).sort(function (a, b) {
+    return +(letters[b] > letters[a]) || +(letters[b] === letters[a]) - 1;
+  }).forEach(function (letter) {
     characters = characters + letter + letters[letter];
   });
   console.log(characters);
